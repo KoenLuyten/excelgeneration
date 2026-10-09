@@ -1,0 +1,45 @@
+@host = http://localhost:5088
+
+### Generate a workbook with two sheets
+POST {{host}}/jsonrpc
+Content-Type: application/json
+
+{
+  "id": "{{$guid}}",
+  "jsonrpc": "2.0",
+  "method": "Excel.Generate",
+  "params": {
+    "fileName": "report.xlsx",
+    "sheets": [
+      {
+        "name": "Orders",
+        "columns": [
+          { "name": "Id", "type": "Integer" },
+          { "name": "Date", "type": "Date", "format": "dd/mm/yyyy" },
+          { "name": "Amount", "type": "Decimal", "format": "#,##0.00", "width": 14 },
+          { "name": "Paid", "type": "Boolean" },
+          { "name": "Link", "type": "Hyperlink" },
+          { "name": "Double", "type": "Formula" }
+        ],
+        "header": { "bold": true, "fontColor": "#FFFFFF", "backgroundColor": "#1F4E78", "freeze": true, "bottomBorder": true },
+        "autoFilter": true,
+        "rows": [
+          [1, "2026-10-01", 12.5, true, "https://example.com/orders/1", "=C2*2"],
+          [2, "2026-10-02", null, false, null, "=C3*2"]
+        ]
+      },
+      {
+        "name": "Plain",
+        "showHeader": false,
+        "columns": [ { "name": "Value" } ],
+        "rows": [ ["no header"] ]
+      }
+    ]
+  }
+}
+
+### Validation error (-32602)
+POST {{host}}/jsonrpc
+Content-Type: application/json
+
+{ "id": "{{$guid}}", "jsonrpc": "2.0", "method": "Excel.Generate", "params": { "sheets": [] } }

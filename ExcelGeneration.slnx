@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ExcelGeneration.Api/ExcelGeneration.Api.csproj" />
+    <Project Path="src/ExcelGeneration.Client/ExcelGeneration.Client.csproj" />
+    <Project Path="src/ExcelGeneration.Contracts/ExcelGeneration.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ExcelGeneration.Tests/ExcelGeneration.Tests.csproj" />
+  </Folder>
+</Solution>

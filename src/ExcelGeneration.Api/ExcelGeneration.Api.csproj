@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="MediatorEndpoint" />
+    <PackageReference Include="MediatorEndpoint.JsonRpc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExcelGeneration.Contracts\ExcelGeneration.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
